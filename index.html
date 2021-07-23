@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/libs.css">
+    <link rel="stylesheet" href="css/boot.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <title>GC - Site de Orçamentos</title>
+</head>
+<body>
+
+<div class="ajax_load">
+    <div class="ajax_load_box">
+        <div class="ajax_load_box_circle"></div>
+        <p class="ajax_load_box_title">Aguarde, carregando...</p>
+    </div>
+</div>
+
+<div class="ajax_response"></div>
+
+<div class="dash">
+    <aside class="dash_sidebar">
+        <article class="dash_sidebar_user">
+            <img class="dash_sidebar_user_thumb" src="assets/images/avatar.jpg" alt="" title=""/>
+
+            <h1 class="dash_sidebar_user_name">
+                <a href="">Users</a>
+            </h1>
+        </article>
+
+        <ul class="dash_sidebar_nav">
+            <li class="dash_sidebar_nav_item active">
+                <a class="icon-tachometer" href="dashboard.php?app=dashboard/index">Dashboard</a>
+            </li>
+            <li class="dash_sidebar_nav_item"><a class="icon-users" href="dashboard.php?app=users/index">Clientes</a>
+                <ul class="dash_sidebar_nav_submenu">
+                    <li class=""><a href="dashboard.php?app=users/index">Ver Todos</a></li>
+                    <li class=""><a href="dashboard.php?app=companies/index">Empresas Parceiras</a></li>
+                    <li class=""><a href="dashboard.php?app=users/team">Time</a></li>
+                    <li class=""><a href="dashboard.php?app=users/create">Criar Novo</a></li>
+                </ul>
+            </li>
+            <li class="dash_sidebar_nav_item"><a class="icon-home" href="dashboard.php?app=properties/index">Imóveis</a>
+                <ul class="dash_sidebar_nav_submenu">
+                    <li class=""><a href="dashboard.php?app=properties/index">Ver Todos</a></li>
+                    <li class=""><a href="dashboard.php?app=properties/create">Criar Novo</a></li>
+                </ul>
+            </li>
+            <li class="dash_sidebar_nav_item"><a class="icon-file-text" href="dashboard.php?app=contracts/index">Contratos</a>
+                <ul class="dash_sidebar_nav_submenu">
+                    <li class=""><a href="dashboard.php?app=contracts/index">Ver Todos</a></li>
+                    <li class=""><a href="dashboard.php?app=contracts/create">Criar Novo</a></li>
+                </ul>
+            </li>
+            <li class="dash_sidebar_nav_item"><a class="icon-reply" href="">Ver Site</a></li>
+            <li class="dash_sidebar_nav_item"><a class="icon-sign-out on_mobile" href="" target="_blank">Sair</a></li>
+        </ul>
+
+    </aside>
+
+    <section class="dash_content">
+
+        <div class="dash_userbar">
+            <div class="dash_userbar_box">
+                <div class="dash_userbar_box_content">
+                    <span class="icon-align-justify icon-notext mobile_menu transition btn btn-blue"></span>
+                    <h1 class="transition">
+                        <i class="icon-imob text-orange"></i><a href="">Gc<b> Orçamentos</b></a>
+                    </h1>
+                    <div class="dash_userbar_box_bar no_mobile">
+                        <a class="text-red icon-sign-out" href="">Sair</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dash_content_box">
+            <section class="dash_content_app">
+
+                <header class="dash_content_app_header">
+                    <h2 class="icon-user-plus">Novo Cliente</h2>
+                </header>
+
+                <div class="dash_content_app_box">
+                    <div class="nav">
+                        <ul class="nav_tabs">
+                            <li class="nav_tabs_item">
+                                <a href="#data" class="nav_tabs_item_link active">Dados do Cliente</a>
+                            </li>
+                            <li class="nav_tabs_item">
+                                <a href="#budgetings" class="nav_tabs_item_link">Orçamento</a>
+                            </li>
+                            <li class="nav_tabs_item">
+                                <a href="#complementary" class="nav_tabs_item_link">Imóveis</a>
+                            </li>
+                            <li class="nav_tabs_item">
+                                <a href="#management" class="nav_tabs_item_link">Administrativo</a>
+                            </li>
+                        </ul>
+
+                        <form class="app_form" action="#" method="post" enctype="multipart/form-data">
+                            <div class="nav_tabs_content">
+                                <div id="data">
+                                    <div class="label_gc">
+                                        <span class="legend">Tipo:</span>
+                                        <label class="label">
+                                            <input type="checkbox" name="budgeting" id="budgeting"><span>Orçamento</span>
+                                        </label>
+
+                                        <label class="label">
+                                            <input type="checkbox" name="contract" id="contract"><span>Contrato</span>
+                                        </label>
+                                    </div>
+
+                                    <label class="label">
+                                        <span class="legend">*Nome:</span>
+                                        <input type="text" name="name" id="name" placeholder="Nome Completo" value=""/>
+                                    </label>
+
+                                    <div class="label_g2">
+                                        <label class="label">
+                                            <span class="legend">*Pagamento:</span>
+                                            <select name="payment" id="payment">
+                                                <option value="pix">PIX</option>
+                                                <option value="bank_transfer">Transferência Bancária</option>
+                                                <option value="at_sight">Á Vista</option>
+                                            </select>
+                                        </label>
+
+                                        <label class="label">
+                                            <span class="legend">*E-mail:</span>
+                                            <input type="email" name="email" id="email" placeholder="Melhor e-mail"
+                                                   value=""/>
+                                        </label>
+                                    </div>
+
+                                    <div class="label_g2">
+                                        <label class="label">
+                                            <span class="legend">*Celular:</span>
+                                            <input type="tel" name="cell" id="cell" class="mask-cell"
+                                                   placeholder="Número do Telefone com DDD" value=""/>
+                                        </label>
+
+                                        <label class="label">
+                                            <span class="legend">*Residencial:</span>
+                                            <input type="tel" name="telephone" id="telephone" class="mask-phone"
+                                                   placeholder="Número do Telefone com DDD" value=""/>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div id="budgetings" class="d-none">
+                                    <div class="app_collapse">
+
+                                        <div class="app_collapse_content">
+                                            <div class="label_g2">
+                                                <label class="label">
+                                                    <span class="legend">*Serviço:</span>
+                                                    <input type="text" name="name" id="name" placeholder="Tipos de serviços a serem feito" value=""/>
+                                                </label>
+                                                <label class="label">
+                                                    <span class="legend">Quantidade:</span>
+                                                    <input type="tel" name="the_amount"  id="the_amount" placeholder="Quantidade de serviços" value=""/>
+                                                </label>
+                                            </div>
+                                            <label class="label">
+                                                <span class="legend">Descrição do Serviço:</span>
+                                                <textarea name="description" id="description" cols="30" rows="10" class="mce"></textarea>
+                                            </label>
+                                            <span class="legend">*Vendedor:</span>
+                                            <select name="seller" id="seller">
+                                                <option value="">Selecione um vendedor...</option>
+                                                <option value="paulo">Paulo Vitor Silva Brandão</option>
+                                                <option value="pedro">Pedro Henrique Gomes Dourado</option>
+                                                <option value="rodrigo">Rodrigo Lucas Alves de Oliveira</option>
+                                                <option value="michael">Michael Alves do Reino</option>
+                                                <option value="willian">Wilian Pereira de Jesus</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="complementary" class="d-none">
+                                    <div class="app_collapse">
+
+                                        <div class="app_collapse_content">
+                                            <div class="label_g2">
+                                                <label class="label">
+                                                    <span class="legend">*Serviço:</span>
+                                                    <input type="tel" name="income" class="mask-money"
+                                                           placeholder="Valores em Reais" value=""/>
+                                                </label>
+                                                <label class="label">
+                                                    <span class="legend">Quantidade:</span>
+                                                    <input type="tel" name="the_amount" placeholder="Quantidade de serviços" value=""/>
+                                                </label>
+                                            </div>
+                                            <label class="label">
+                                                <span class="legend">Descrição do Serviço:</span>
+                                                <textarea name="description" cols="30" rows="10" class="mce"></textarea>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                    </div>
+
+                    <div class="text-right mt-2">
+                        <button class="btn btn-large btn-blue icon-check-square-o" type="submit">Salvar Alterações
+                        </button>
+                    </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </section>
+</div>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/tinymce/tinymce.min.js"></script>
+<script src="js/libs.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
